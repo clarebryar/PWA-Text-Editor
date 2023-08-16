@@ -14,7 +14,7 @@ module.exports = () => {
       install: './src/js/install.js'
     },
     output: {
-      filename: 'bundle.js',
+      filename: '[name].bundle.js',
       path: path.resolve(__dirname, 'dist'),
     },
     plugins: [
@@ -23,22 +23,22 @@ module.exports = () => {
         title: 'J.A.T.E'
       }),
       new InjectManifest({
-        swSrc: './client/src-sw.js',
+        swSrc: './src/src-sw.js',
         swDest: 'service-worker.js'
       }),
       new WebpackPwaManifest({
-        name: '',
-        short_name: 'TODOzzz',
-        description: 'Keep track of important tasks!',
+        name: 'PWA-Text-Editor',
+        short_name: 'text editor',
+        description: 'text editor',
         background_color: '#7eb4e2',
         theme_color: '#7eb4e2',
         start_url: './',
         publicPath: './',
         icons: [
           {
-            src: path.resolve('../src/images/logo.png'),
+            src: path.resolve('./src/images/logo.png'),
             sizes: [96, 128, 192, 256, 384, 512],
-            destination: path.join('icons'),
+            destination: path.join('images', 'icons'),
           },
         ],
       }),
